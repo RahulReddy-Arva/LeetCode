@@ -20,10 +20,11 @@
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        ...
-        return False
+        if len(s) != len(t):
+            return False
+        return sorted(s) == sorted(t)
 
 
 s = Solution()
-p = s.isAnagram(s="anagram", t="nagaram")
+p = s.isAnagram(s="anagram", t="naagmar")
 print(p)

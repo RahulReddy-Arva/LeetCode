@@ -53,20 +53,19 @@ class Solution:
           "M" : 1000
         }
         res = 0
-        nxt = 0
+
         if len(s) == 0:
             return 0
         if len(s) == 1:
             return roman.get(s)
         for i in range(len(s)-1):
-            cur =roman.get(s[i])
-            nxt = roman.get(s[i+ 1])
-            res = res - cur if cur < nxt else res + cur
-        return res + nxt
-
-
+            if roman.get(s[i]) < roman.get(s[i+1]):
+              res = res - roman.get(s[i])
+            else:
+              res = res + roman.get(s[i])
+        return res + roman.get(s[-1])
 
 s = Solution()
-inp = "MCMXCIV"
+inp = "D"
 p = s.romanToInt(inp)
 print(f"INPUT  : {inp} \nOUTPUT : {p}")
